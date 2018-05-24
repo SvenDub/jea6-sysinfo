@@ -1,0 +1,13 @@
+applications:
+- name: eureka-server
+  disk_quota: 512M
+  instances: 1
+  memory: 512M
+  path: eureka-server/target/eureka-server-0.0.1-SNAPSHOT.jar
+- name: collector-cpu
+  disk_quota: 512M
+  instances: 1
+  memory: 512M
+  path: collector-cpu/target/collector-cpu-0.0.1-SNAPSHOT.jar
+  services:
+    - eureka
