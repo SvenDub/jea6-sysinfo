@@ -2,7 +2,8 @@ package nl.svendubbeld.fontys.sysinfo.collector.cpu
 
 import com.sun.management.OperatingSystemMXBean
 import nl.svendubbeld.fontys.sysinfo.collector.StatsProvider
-import nl.svendubbeld.fontys.sysinfo.collector.StatsResponse
+import nl.svendubbeld.fontys.sysinfo.shared.StatsData
+import nl.svendubbeld.fontys.sysinfo.shared.StatsResponse
 import org.springframework.stereotype.Component
 import java.lang.management.ManagementFactory
 import java.time.OffsetDateTime
@@ -13,9 +14,9 @@ class CpuStatsProvider : StatsProvider {
         val sysinfo = ManagementFactory.getOperatingSystemMXBean() as OperatingSystemMXBean
 
         return StatsResponse(OffsetDateTime.now(), mapOf(
-                "cpu.load" to sysinfo.systemCpuLoad,
-                "cpu.counts" to sysinfo.availableProcessors,
-                "cpu.load_avg" to sysinfo.systemLoadAverage
+                "cpu.load" to StatsData(sysinfo.systemCpuLoad),
+                "cpu.counts" to StatsData(sysinfo.availableProcessors),
+                "cpu.load_avg" to StatsData(sysinfo.systemLoadAverage)
         ))
     }
 }

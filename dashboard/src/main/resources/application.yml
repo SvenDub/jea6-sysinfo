@@ -1,10 +1,7 @@
 spring:
   application:
-    name: collector-mem
+    name: dashboard
 eureka:
   client:
     serviceUrl:
       defaulZone: http://127.0.0.1:8761/eureka/
-  instance:
-    metadata-map:
-      collector: mem

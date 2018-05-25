@@ -1,5 +1,7 @@
 package nl.svendubbeld.fontys.sysinfo.collector
 
+import nl.svendubbeld.fontys.sysinfo.shared.StatsResponse
+
 /**
  * Provides system stats.
  */

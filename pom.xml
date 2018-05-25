@@ -16,10 +16,12 @@
     </parent>
 
     <modules>
+        <module>shared</module>
         <module>collector-base</module>
         <module>collector-cpu</module>
         <module>collector-mem</module>
         <module>eureka-server</module>
+        <module>dashboard</module>
     </modules>
 
     <properties>
@@ -83,6 +85,37 @@
                 <groupId>nl.svendubbeld.fontys.sysinfo.collector</groupId>
                 <artifactId>collector-base</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>nl.svendubbeld.fontys.sysinfo</groupId>
+                <artifactId>shared</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>webjars-locator</artifactId>
+                <version>0.34</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>4.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>momentjs</artifactId>
+                <version>2.21.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.bower</groupId>
+                <artifactId>livestampjs</artifactId>
+                <version>1.1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.bower</groupId>
+                <artifactId>filesize</artifactId>
+                <version>3.5.6</version>
             </dependency>
 
             <dependency>
