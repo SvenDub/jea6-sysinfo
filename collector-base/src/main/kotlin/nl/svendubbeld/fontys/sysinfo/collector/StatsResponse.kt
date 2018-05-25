@@ -1,3 +1,5 @@
 package nl.svendubbeld.fontys.sysinfo.collector
 
-data class StatsResponse(var data: Map<String, Any>)
+import java.time.OffsetDateTime
+
+data class StatsResponse(var time: OffsetDateTime, var data: Map<String, Any>)
