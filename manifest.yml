@@ -2,12 +2,22 @@ applications:
 - name: eureka-server
   disk_quota: 512M
   instances: 1
-  memory: 512M
+  memory: 768M
+  buildpack: java_buildpack
   path: eureka-server/target/eureka-server-0.0.1-SNAPSHOT.jar
 - name: collector-cpu
   disk_quota: 512M
   instances: 1
   memory: 512M
+  buildpack: java_buildpack
   path: collector-cpu/target/collector-cpu-0.0.1-SNAPSHOT.jar
+  services:
+    - eureka
+- name: collector-mem
+  disk_quota: 512M
+  instances: 1
+  memory: 512M
+  buildpack: java_buildpack
+  path: collector-mem/target/collector-mem-0.0.1-SNAPSHOT.jar
   services:
     - eureka

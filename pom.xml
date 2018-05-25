@@ -18,6 +18,7 @@
     <modules>
         <module>collector-base</module>
         <module>collector-cpu</module>
+        <module>collector-mem</module>
         <module>eureka-server</module>
     </modules>
 
