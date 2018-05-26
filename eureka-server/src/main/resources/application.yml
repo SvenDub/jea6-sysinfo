@@ -2,7 +2,7 @@
 eureka:
   client:
     registerWithEureka: false
-    fetchRegistry: false
+    fetchRegistry: true
 spring:
   application:
     name: eureka-server
