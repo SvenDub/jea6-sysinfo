@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "sysinfo.refresh-interval",
+      "type": "java.lang.Long",
+      "description": "Fixed delay between invocations of refresh in milliseconds."
+    }
+  ]
+}

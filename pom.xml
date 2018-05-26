@@ -22,6 +22,7 @@
         <module>collector-mem</module>
         <module>eureka-server</module>
         <module>dashboard</module>
+        <module>aggregator</module>
     </modules>
 
     <properties>

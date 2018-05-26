@@ -2,8 +2,8 @@ package nl.svendubbeld.fontys.sysinfo.collector.mem
 
 import com.sun.management.OperatingSystemMXBean
 import nl.svendubbeld.fontys.sysinfo.collector.StatsProvider
-import nl.svendubbeld.fontys.sysinfo.shared.StatsData
-import nl.svendubbeld.fontys.sysinfo.shared.StatsResponse
+import nl.svendubbeld.fontys.sysinfo.shared.entity.StatsData
+import nl.svendubbeld.fontys.sysinfo.shared.entity.StatsResponse
 import org.springframework.stereotype.Component
 import java.lang.management.ManagementFactory
 import java.time.OffsetDateTime

@@ -1,0 +1,14 @@
+server:
+  port: 0
+spring:
+  application:
+    name: aggregator
+eureka:
+  client:
+    serviceUrl:
+      defaulZone: http://127.0.0.1:8761/eureka/
+  instance:
+    metadata-map:
+      aggregator: all
+sysinfo:
+  refresh-interval: 10000
