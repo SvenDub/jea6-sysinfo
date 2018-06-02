@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: collector-net
+eureka:
+  client:
+    serviceUrl:
+      defaulZone: http://127.0.0.1:8761/eureka/
+  instance:
+    metadata-map:
+      collector: net
+sysinfo:
+  net:
+    interfaces: enp4s0, wlp3s0

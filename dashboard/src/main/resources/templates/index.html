@@ -33,28 +33,31 @@
     </div>
     <div class="row">
         <!--/*@thymesVar id="services" type="java.util.List<java.lang.String>"*/-->
-        <div th:each="service : ${services}" class="col-md-6">
-            <div class="card bg-secondary" th:data-url="'/api/stats/' + ${service}" data-format="table">
-                <div class="card-header" th:text="${service}">
-                </div>
-                <div class="card-body">
-                    <table class="table table-hover table-borderless">
-                        <thead>
-                        <tr>
-                            <th width="25%">Key</th>
-                            <th>Value</th>
-                        </tr>
-                        </thead>
-                        <tbody data-table>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="card-footer text-light">
-                    Last update: <em data-last-update>never</em>
+        <div class="col">
+            <div class="card-column-wrapper">
+                <div th:each="service : ${services}" class="card bg-secondary" th:data-url="'/api/stats/' + ${service}" data-format="table">
+                    <div class="card-header" th:text="${service}">
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover table-borderless">
+                            <thead>
+                            <tr>
+                                <th width="25%">Key</th>
+                                <th>Value</th>
+                            </tr>
+                            </thead>
+                            <tbody data-table>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer text-light">
+                        Last update: <em data-last-update>never</em>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

@@ -12,10 +12,11 @@ class MemStatsProvider : StatsProvider {
         val sysinfo = ManagementFactory.getOperatingSystemMXBean() as OperatingSystemMXBean
 
         return listOf(
-                 StatsData("mem.total", sysinfo.totalPhysicalMemorySize, "bytes"),
-                 StatsData("mem.free", sysinfo.freePhysicalMemorySize, "bytes"),
-                 StatsData("swap.total", sysinfo.totalSwapSpaceSize, "bytes"),
-                 StatsData("swap.free", sysinfo.freeSwapSpaceSize, "bytes")
+                StatsData("mem.total", sysinfo.totalPhysicalMemorySize, "bytes"),
+                StatsData("mem.free", sysinfo.freePhysicalMemorySize, "bytes"),
+                StatsData("mem.used", sysinfo.totalPhysicalMemorySize - sysinfo.freePhysicalMemorySize, "bytes"),
+                StatsData("swap.total", sysinfo.totalSwapSpaceSize, "bytes"),
+                StatsData("swap.free", sysinfo.freeSwapSpaceSize, "bytes")
         )
     }
 }

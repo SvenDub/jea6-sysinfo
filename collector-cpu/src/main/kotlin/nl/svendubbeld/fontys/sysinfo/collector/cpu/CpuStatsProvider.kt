@@ -12,7 +12,7 @@ class CpuStatsProvider : StatsProvider {
         val sysinfo = ManagementFactory.getOperatingSystemMXBean() as OperatingSystemMXBean
 
         return listOf(
-                StatsData("cpu.load", sysinfo.systemCpuLoad),
+                StatsData("cpu.load", sysinfo.systemCpuLoad, "percentage"),
                 StatsData("cpu.count", sysinfo.availableProcessors),
                 StatsData("cpu.load_avg", sysinfo.systemLoadAverage)
         )

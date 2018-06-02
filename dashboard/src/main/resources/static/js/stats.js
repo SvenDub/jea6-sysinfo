@@ -122,7 +122,9 @@ function getValue(data) {
   switch (data.unit) {
     case 'bytes':
       return filesize(data.value, {standard: 'iec'});
+    case 'percentage':
+      return `${Math.round(data.value * 100 * 100) / 100} %`;
     default:
-      return Math.round(data.value * 100)/100;
+      return Math.round(data.value * 100) / 100;
   }
 }

@@ -20,6 +20,7 @@
         <module>collector-base</module>
         <module>collector-cpu</module>
         <module>collector-mem</module>
+        <module>collector-net</module>
         <module>eureka-server</module>
         <module>dashboard</module>
         <module>aggregator</module>
