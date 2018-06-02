@@ -21,5 +21,6 @@ class DashboardController(private val discoveryClient: DiscoveryClient) {
             .groupBy { it.metadata["collector"] }
             .map { it.value.firstOrNull() }
             .filterNotNull()
-            .sortedBy { it.metadata["collector"] }
+            .map { it.metadata["collector"] }
+            .sortedBy { it }
 }

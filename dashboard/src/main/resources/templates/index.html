@@ -20,6 +20,7 @@
         <div class="col">
             <div class="card bg-secondary" data-url="/api/graph/" data-url-key="" data-format="graph" id="main-graph">
                 <div class="card-header">
+                    Last hour
                 </div>
                 <div class="card-body">
                     <canvas></canvas>
@@ -31,10 +32,10 @@
         </div>
     </div>
     <div class="row">
-        <!--/*@thymesVar id="services" type="java.util.List<org.springframework.cloud.client.ServiceInstance>"*/-->
+        <!--/*@thymesVar id="services" type="java.util.List<java.lang.String>"*/-->
         <div th:each="service : ${services}" class="col-md-6">
-            <div class="card bg-secondary" th:data-url="${service.uri} + '/stats'" data-format="table">
-                <div class="card-header" th:text="${service.metadata['collector']}">
+            <div class="card bg-secondary" th:data-url="'/api/stats/' + ${service}" data-format="table">
+                <div class="card-header" th:text="${service}">
                 </div>
                 <div class="card-body">
                     <table class="table table-hover table-borderless">

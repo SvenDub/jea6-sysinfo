@@ -10,5 +10,6 @@ eureka:
   instance:
     metadata-map:
       aggregator: all
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
 sysinfo:
   refresh-interval: 10000
