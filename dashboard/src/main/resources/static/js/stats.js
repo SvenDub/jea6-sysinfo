@@ -13,27 +13,23 @@ function loadTables() {
     fetch(url)
       .then(value => value.json())
       .then(value => {
-        for (const key in value.data) {
-          if (!value.data.hasOwnProperty(key)) {
-            continue;
-          }
-
-          let row = table.querySelector(`[data-key="${key}"]`);
+        value.forEach(stat => {
+          let row = table.querySelector(`[data-key="${stat.key}"]`);
 
           if (row == null) {
-            row = createRow(key);
+            row = createRow(stat.key);
 
             table.appendChild(row);
           }
 
           const keyElement = row.querySelector('[data-key-col]');
-          keyElement.innerText = key;
+          keyElement.innerText = stat.key;
 
           const dataElement = row.querySelector('[data-data-col]');
-          dataElement.innerText = getValue(value.data[key]);
-        }
+          dataElement.innerText = getValue(stat);
+        });
 
-        lastUpdate.setAttribute('data-livestamp', value.time);
+        lastUpdate.setAttribute('data-livestamp', new Date().toISOString());
       });
   });
 

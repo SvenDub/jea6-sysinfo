@@ -3,21 +3,19 @@ package nl.svendubbeld.fontys.sysinfo.collector.mem
 import com.sun.management.OperatingSystemMXBean
 import nl.svendubbeld.fontys.sysinfo.collector.StatsProvider
 import nl.svendubbeld.fontys.sysinfo.shared.entity.StatsData
-import nl.svendubbeld.fontys.sysinfo.shared.entity.StatsResponse
 import org.springframework.stereotype.Component
 import java.lang.management.ManagementFactory
-import java.time.OffsetDateTime
 
 @Component
 class MemStatsProvider : StatsProvider {
-    override fun getStats(): StatsResponse {
+    override fun getStats(): List<StatsData> {
         val sysinfo = ManagementFactory.getOperatingSystemMXBean() as OperatingSystemMXBean
 
-        return StatsResponse(OffsetDateTime.now(), mapOf(
-                "mem.total" to StatsData(sysinfo.totalPhysicalMemorySize, "bytes"),
-                "mem.free" to StatsData(sysinfo.freePhysicalMemorySize, "bytes"),
-                "swap.total" to StatsData(sysinfo.totalSwapSpaceSize, "bytes"),
-                "swap.free" to StatsData(sysinfo.freeSwapSpaceSize, "bytes")
-        ))
+        return listOf(
+                 StatsData("mem.total", sysinfo.totalPhysicalMemorySize, "bytes"),
+                 StatsData("mem.free", sysinfo.freePhysicalMemorySize, "bytes"),
+                 StatsData("swap.total", sysinfo.totalSwapSpaceSize, "bytes"),
+                 StatsData("swap.free", sysinfo.freeSwapSpaceSize, "bytes")
+        )
     }
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/stats.css}" rel="stylesheet">
 
     <title>Dashboard</title>
 </head>
@@ -15,9 +16,9 @@
 </nav>
 <div class="container mt-2">
     <h1 class="text-light">Dashboard</h1>
-    <!--/*@thymesVar id="services" type="java.util.List<org.springframework.cloud.client.ServiceInstance>"*/-->
-    <div th:each="service : ${services}" class="row mb-3">
-        <div class="col">
+    <div class="row">
+        <!--/*@thymesVar id="services" type="java.util.List<org.springframework.cloud.client.ServiceInstance>"*/-->
+        <div th:each="service : ${services}" class="col-md-6">
             <div class="card bg-secondary" th:data-url="${service.uri} + '/stats'" data-format="table">
                 <div class="card-header" th:text="${service.metadata['collector']}">
                 </div>

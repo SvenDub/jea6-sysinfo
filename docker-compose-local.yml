@@ -8,11 +8,11 @@ services:
       MYSQL_USER: "fontys"
       MYSQL_PASSWORD: "fontys"
     volumes:
-      - sysinfo-mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql
     ports:
       - target: 3306
         published: 3306
         protocol: tcp
         mode: host
 volumes:
-  sysinfo-mysql:
+  mysql:
