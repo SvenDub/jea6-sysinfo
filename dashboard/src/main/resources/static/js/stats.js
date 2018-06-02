@@ -1,8 +1,67 @@
 document.addEventListener('DOMContentLoaded', () => {
   loadTables();
+  loadGraphs();
 });
 
 moment.relativeTimeThreshold('ss', 4);
+Chart.defaults.global.defaultFontColor = '#212529';
+Chart.defaults.global.defaultColor = 'white';
+
+function loadGraphs() {
+  const containers = document.querySelectorAll('[data-format="graph"]');
+  containers.forEach(container => {
+    loadGraph(container);
+  });
+
+  setTimeout(loadGraphs, 10000);
+}
+
+function loadGraph(container) {
+  const url = container.attributes.getNamedItem('data-url').value;
+  const urlKey = container.attributes.getNamedItem('data-url-key').value;
+  const canvas = container.querySelector('canvas');
+  const lastUpdate = container.querySelector('[data-last-update]');
+  let chart = container['chart'];
+
+  if (urlKey === null || urlKey.length === 0) {
+    return;
+  }
+
+  fetch(url + urlKey)
+    .then(value => value.json())
+    .then(datasets => {
+      const ctx = canvas.getContext('2d');
+      if (!chart) {
+        chart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: datasets.length > 0 ? datasets[0].data.map(d => d.t) : [],
+            datasets
+          },
+          options: {
+            scales: {
+              xAxes: [
+                {
+                  type: 'time',
+                  time: {
+                    unit: 'minute'
+                  },
+                }],
+            },
+          }
+        });
+        container['chart'] = chart;
+      } else {
+        chart.data = {
+          labels: datasets.length > 0 ? datasets[0].data.map(d => d.t) : [],
+          datasets
+        };
+        chart.update(0);
+      }
+
+      lastUpdate.setAttribute('data-livestamp', new Date().toISOString());
+    });
+}
 
 function loadTables() {
   const containers = document.querySelectorAll('[data-format="table"]');
@@ -10,6 +69,7 @@ function loadTables() {
     const url = container.attributes.getNamedItem('data-url').value;
     const table = container.querySelector('[data-table]');
     const lastUpdate = container.querySelector('[data-last-update]');
+
     fetch(url)
       .then(value => value.json())
       .then(value => {
@@ -39,6 +99,7 @@ function loadTables() {
 function createRow(key) {
   const row = document.createElement('tr');
   row.setAttribute('data-key', key);
+  row.onclick = ev => selectGraph(key);
 
   const keyElement = document.createElement('td');
   keyElement.setAttribute('data-key-col', null);
@@ -49,6 +110,12 @@ function createRow(key) {
   row.appendChild(dataElement);
 
   return row;
+}
+
+function selectGraph(key) {
+  const container = document.querySelector('#main-graph');
+  container.setAttribute('data-url-key', key);
+  loadGraph(container);
 }
 
 function getValue(data) {

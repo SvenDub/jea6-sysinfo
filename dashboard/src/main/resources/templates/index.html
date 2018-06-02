@@ -17,6 +17,20 @@
 <div class="container mt-2">
     <h1 class="text-light">Dashboard</h1>
     <div class="row">
+        <div class="col">
+            <div class="card bg-secondary" data-url="/api/graph/" data-url-key="" data-format="graph" id="main-graph">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    <canvas></canvas>
+                </div>
+                <div class="card-footer text-light">
+                    Last update: <em data-last-update>never</em>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <!--/*@thymesVar id="services" type="java.util.List<org.springframework.cloud.client.ServiceInstance>"*/-->
         <div th:each="service : ${services}" class="col-md-6">
             <div class="card bg-secondary" th:data-url="${service.uri} + '/stats'" data-format="table">
@@ -48,6 +62,7 @@
 <script th:src="@{/webjars/momentjs/min/moment-with-locales.min.js}"></script>
 <script th:src="@{/webjars/livestampjs/livestamp.min.js}"></script>
 <script th:src="@{/webjars/filesize/lib/filesize.min.js}"></script>
+<script th:src="@{/webjars/chartjs/Chart.min.js}"></script>
 <script th:src="@{/js/stats.js}"></script>
 </body>
 </html>
